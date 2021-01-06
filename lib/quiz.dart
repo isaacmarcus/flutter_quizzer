@@ -21,8 +21,8 @@ class Quiz extends StatelessWidget {
         // ".map" takes an existing map's key's elements and maps them to a list 
         // that is returned in the bracket pointer
         // important to use as List as dart does not know what you are mapping with otherwise
-        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
-          return Answer(answerQuestion, answer);
+        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
+          return Answer(() => answerQuestion(answer['score']), answer['text']);
         }).toList()
       ],
     );
